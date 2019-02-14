@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/llItemAndroid2Root"
+        android:layout_width="match_parent"
+        android:background="@color/appPageBGC"
+        android:layout_height="match_parent"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:orientation="vertical">
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="15dp"
+            android:background="@color/bottomLineColor2"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="20dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/black"
+                    android:text="修改 support 包 TabLayout，实现新浪微博/即刻 APP 蚯蚓导航效果111111111111111111111111111111"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <ImageView
+                    android:id="@+id/img"
+                    android:layout_height="80dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                    android:id="@+id/img2"
+                    android:layout_height="80dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="3dp"
+                    android:src="@mipmap/ic_launcher"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/owner"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:layout_height="wrap_content"
+                    android:text="新浪军事"/>
+
+            <TextView android:id="@+id/time"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="8dp"
+                      android:text="11-01"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="15dp"
+            android:background="@color/bottomLineColor2"/>
+
+</LinearLayout>

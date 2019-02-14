@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6d74e0</color>
+    <color name="colorPrimaryDark">#6d74e0</color>
+    <color name="colorAccent">#6d74e0</color>
+
+    <color name="appPageBGC">#fdfdfd</color>
+    <color name="bottomLineColor2">#AAAAAA</color>
+    <color name="unSelectColor">#e9e9e9</color>
+    <color name="f1">#f1f1f1</color>
+    <color name="textColor">#818181</color>
+    <color name="messageCenterItemColor">#F2F1F1</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="triangle">#aa72d572</color>
+    <color name="circle">#aa738ffe</color>
+    <color name="rect">#aae84e40</color>
+    <!--水波纹或5.0以下选择器颜色-->
+    <color name="tabBackground">#777D7D7D</color>
+</resources>

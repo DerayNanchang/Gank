@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--// menu 三个白点-->
+        <item name="android:textColorSecondary">#ffffff</item>
+    </style>
+
+    <style name="NoSpaceActionBarTheme" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="titleTextColor">#ffffff</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="titleTextAppearance">@style/ToolBar.Title</item>
+        <item name="subtitleTextAppearance">@style/Toolbar.SubTitle</item>
+    </style>
+
+    <!--titlebar 标题-->
+    <style name="ToolBar.Title" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Toolbar.SubTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/bottomLineColor2</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="actionBarItemBackground">@drawable/toolbarItemBackground</item>
+        <item name="selectableItemBackground">@drawable/toolbarItemBackground</item>
+        <item name="titleTextAppearance">@style/ToolBar.Title</item>
+        <item name="subtitleTextAppearance">@style/Toolbar.SubTitle</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:textSize">18sp</item> &lt;!&ndash;  搞掂字体大小&ndash;&gt;-->
+    </style>
+
+    <style name="WebTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+</resources>
