@@ -2,6 +2,11 @@ package com.audio.administrator.ganhuo.base
 
 object Constant {
 
+    const val APP_NAME_EN = "Gank"
+    const val APK = "apk"
+    const val PHOTO = "photo"
+    const val DOWNLOAD_NAME = "gank.apk"
+
     // Progress
     const val TYPE_PROGRESS = -10
     const val PROGRESS_SIZE = 1
@@ -18,4 +23,9 @@ object Constant {
     const val IOS_TYPE = "ios"
     const val WELFARE_TYPE = "welfare"
     const val VIDEO_TYPE = "video"
+
+
+    const val SIZE = "size"
+    const val POSITION = "position"
+    const val IMGS = "imgs"
 }

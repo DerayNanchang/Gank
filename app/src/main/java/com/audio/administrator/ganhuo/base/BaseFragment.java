@@ -9,7 +9,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.audio.administrator.ganhuo.R;
 import com.audio.administrator.ganhuo.annotation.LayoutResId;
+import com.audio.administrator.ganhuo.ui.view.InconstantView;
 
 /**
  * Author: Chris
@@ -70,6 +72,17 @@ abstract public class BaseFragment extends Fragment {
 
 
     protected abstract void init();
+
+    protected void initBody(InconstantView inconstantView) {
+        // 添加空状态与无网络
+        if (inconstantView != null) {
+            inconstantView.addContent(R.layout.view_default_content);
+            inconstantView.addEmptyState(R.layout.view_default_empty_state);
+            inconstantView.addNoConnect(R.layout.view_default_no_connect);
+            inconstantView.addLoading(R.layout.view_custom_wrap_progress);
+            inconstantView.setBodyTransform(InconstantView.Type.LOADING);
+        }
+    }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {

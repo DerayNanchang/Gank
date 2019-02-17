@@ -3,6 +3,8 @@
           package="com.audio.administrator.ganhuo">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
             android:allowBackup="true"
@@ -21,6 +23,8 @@
         </activity>
 
         <activity android:name=".modules.webview.WebViewActivity"/>
+
+        <activity android:name=".modules.img.activity.PicasaViewerActivity"/>
     </application>
 
 </manifest>

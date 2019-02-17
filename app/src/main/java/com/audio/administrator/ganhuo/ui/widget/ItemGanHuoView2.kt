@@ -34,5 +34,13 @@ class ItemGanHuoView2 : BaseItemView<ResultsBean> {
         llItemAndroid2Root.setOnClickListener {
             adapter.itemClickListener.onItemClick(position, data)
         }
+
+        img.setOnClickListener {
+            adapter.onItemView2ImgListener?.itemImageListener(position, data, 0)
+        }
+
+        img2.setOnClickListener {
+            adapter.onItemView2ImgListener?.itemImageListener(position, data, 1)
+        }
     }
 }

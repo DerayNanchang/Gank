@@ -3,7 +3,6 @@ package com.audio.administrator.ganhuo.modules.gank
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.webkit.WebView
 import com.audio.administrator.ganhuo.R
 import com.audio.administrator.ganhuo.base.BaseFragment
 import com.audio.administrator.ganhuo.base.Constant
@@ -12,10 +11,14 @@ import com.audio.administrator.ganhuo.modules.android.bean.ResultsBean
 import com.audio.administrator.ganhuo.modules.android.contract.IGankContract
 import com.audio.administrator.ganhuo.modules.android.fragment.MyFootView
 import com.audio.administrator.ganhuo.modules.android.presenter.GankPresenterImpl
+import com.audio.administrator.ganhuo.modules.img.activity.PicasaViewerActivity
 import com.audio.administrator.ganhuo.modules.webview.WebViewActivity
 import com.audio.administrator.ganhuo.ui.view.InconstantView
+import com.audio.administrator.ganhuo.utils.glide.GlideUtils
+import com.bumptech.glide.Glide
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import kotlinx.android.synthetic.main.fragment_gank.*
+import org.jetbrains.anko.support.v4.startActivity
 
 /**
  * Author: Chris
@@ -43,10 +46,9 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
     }
 
     private fun initView() {
-        initBody()
+        initBody(spvContent)
         inRefresh()
     }
-
 
     private fun inRefresh() {
         refreshLayout?.let {
@@ -61,8 +63,6 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
     }
 
     private fun initData() {
-
-
         presenter = GankPresenterImpl(this)
         mAdapter = GanHuoAdapter()
         mAdapter.addFootView(MyFootView(context))
@@ -107,9 +107,62 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
             updateData()
         }
 
+        // 点击条目事件
         mAdapter.setOnItemClickListener { position, data ->
             WebViewActivity.loadUrl(activity, data.url, data.desc)
         }
+
+        // 1张图片样式的点击事件
+        mAdapter.setOnMItemView1ImgListener(object : GanHuoAdapter.OnItemView1ImgListener {
+            override fun itemImageListener(position: Int, data: ResultsBean) {
+                startActivity<PicasaViewerActivity>(Constant.SIZE to data.images.size, Constant.IMGS to data.images)
+            }
+        })
+
+        mAdapter.setOnMItemView1ImgLongListener(object : GanHuoAdapter.OnItemView1ImgLongListener {
+            override fun itemImageListener(position: Int, data: ResultsBean) {
+                GlideUtils.downLoadImageNew(data.images[position])
+            }
+        })
+
+        // 2张图片样式的点击事件
+        mAdapter.setOnMItemView2ImgListener(object : GanHuoAdapter.OnItemView2ImgListener {
+            override fun itemImageListener(position: Int, data: ResultsBean, imgPosition: Int) {
+
+                startActivity<PicasaViewerActivity>(
+                    Constant.SIZE to data.images.size,
+                    Constant.POSITION to imgPosition,
+                    Constant.IMGS to data.images
+                )
+            }
+        })
+
+        mAdapter.setOnMItemView2ImgLongListener(object : GanHuoAdapter.OnItemView2ImgLongListener {
+            override fun itemImageListener(position: Int, data: ResultsBean, imgPosition: Int) {
+                GlideUtils.downLoadImageNew(data.images[position])
+            }
+        })
+
+        // 3张图片样式的点击事件
+        mAdapter.setOnMItemView3ImgListener(object : GanHuoAdapter.OnItemView3ImgListener {
+            override fun itemImageListener(position: Int, data: ResultsBean, imgPosition: Int) {
+                startActivity<PicasaViewerActivity>(
+                    Constant.SIZE to data.images.size,
+                    Constant.POSITION to imgPosition,
+                    Constant.IMGS to data.images
+                )
+            }
+        })
+
+
+        1111111
+        mAdapter.setOnMItemView3ImgLongListener(object : GanHuoAdapter.OnItemView3ImgLongListener {
+            override fun itemImageListener(position: Int, data: ResultsBean, imgPosition: Int) {
+                GlideUtils.downLoadImageNew(data.images[position])
+            }
+        })
+
+
     }
 
     private fun updateData() {
@@ -161,17 +214,6 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
         return getString(msg)
     }
 
-    private fun initBody() {
-        // 添加空状态与无网络
-        spvContent?.let {
-            spvContent.addContent(R.layout.view_default_content)
-            spvContent.addEmptyState(R.layout.view_default_empty_state)
-            spvContent.addNoConnect(R.layout.view_default_no_connect)
-            spvContent.addLoading(R.layout.view_custom_wrap_progress)
-            spvContent.setBodyTransform(InconstantView.Type.LOADING)
-        }
-
-    }
 
     override fun onEmptyStatusResponse(mode: String) {
         refreshLayoutView.finishRefresh()

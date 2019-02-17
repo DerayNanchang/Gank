@@ -38,6 +38,7 @@ public abstract class BaseAdapter<DATA> extends RecyclerView.Adapter<BaseViewHol
         return data.size();
     }
 
+
     // 默认不添加 head
     protected boolean isAddDefaultHead(boolean isAddDefaultHead) {
         this.isAddDefaultHead = isAddDefaultHead;
@@ -298,11 +299,21 @@ public abstract class BaseAdapter<DATA> extends RecyclerView.Adapter<BaseViewHol
         void onLastVisiblePosition(int lastVisiblePosition);
     }
 
+    /**
+     * 滑动底部动画
+     *
+     * @return
+     */
+    public boolean isLoadingScrollAlpha() {
+        return false;
+    }
 
     @Override
     public void onViewAttachedToWindow(@NonNull BaseViewHolder holder) {
         super.onViewAttachedToWindow(holder);
-        addAnimate(holder, holder.getLayoutPosition());
+        if (isLoadingScrollAlpha()) {
+            addAnimate(holder, holder.getLayoutPosition());
+        }
     }
 
     private void addAnimate(BaseViewHolder holder, int position) {

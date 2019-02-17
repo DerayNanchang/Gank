@@ -17,6 +17,8 @@ class GanHuoApplication : Application() {
         lateinit var get: GanHuoApplication
     }
 
+    private var pageSelectedPosition = 0
+
     override fun onCreate() {
         super.onCreate()
         get = this
@@ -26,6 +28,15 @@ class GanHuoApplication : Application() {
 
     fun isNetConnect(): Boolean {
         return NetUtil.isNetworkConnected(get)
+    }
+
+
+    fun setPageSelectedPosition(position: Int) {
+        this.pageSelectedPosition = position
+    }
+
+    fun getPageSelectedPosition(): Int {
+        return pageSelectedPosition
     }
 
 }

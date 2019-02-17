@@ -9,7 +9,6 @@ object ThreadUtil{
 
     fun runOnUiThread(runnable: Runnable){
         handle.post(runnable)
-
     }
 
 

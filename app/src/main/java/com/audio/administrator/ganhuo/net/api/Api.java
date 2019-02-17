@@ -23,7 +23,7 @@ public interface Api {
     @GET(HttpManager.Interfaces.ANDROID + "/{count}/{page}")
     Observable<EveryDayEntity> getAndroid(@Path("count") int count, @Path("page") int page);
 
-    //"http://gank.io/api/data/IOS/$count/$page"
+    //"http://gank.io/api/data/iOS/$count/$page"
     @GET(HttpManager.Interfaces.IOS + "/{count}/{page}")
     Observable<EveryDayEntity> getIOS(@Path("count") int count, @Path("page") int page);
 

@@ -40,7 +40,7 @@ public class HttpManager {
 
     public interface Interfaces {
         String ANDROID = "/api/data/Android";
-        String IOS = "/api/data/IOS";
+        String IOS = "/api/data/iOS";
         String WELFARE = "api/data/福利";
         String VIDEO = "/api/data/休息视频";
     }

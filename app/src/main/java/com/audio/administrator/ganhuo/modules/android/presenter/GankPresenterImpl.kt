@@ -43,7 +43,7 @@ class GankPresenterImpl(view: IGankContract.IGankView) : BasePresenter<IGankCont
                 super.onSuccess(key, result)
                 if (!result.isError) {
                     if (result.results != null) {
-                        if (result.results.size != 0){
+                        if (result.results.size > 0){
                             if (setCache(key, result.results)){
                                 view?.getGankSuccess(mode, result.results, false)
                             }

@@ -17,4 +17,7 @@
     <color name="rect">#aae84e40</color>
     <!--水波纹或5.0以下选择器颜色-->
     <color name="tabBackground">#777D7D7D</color>
+    
+    <color name="t58">#585858</color>
+    <color name="c3">#c3c3c3</color>
 </resources>

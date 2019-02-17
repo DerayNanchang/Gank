@@ -26,8 +26,6 @@ class GankModelImpl : IGankContract.IGankModel {
         page: Int,
         response: ModelResponseAdapter<ResultsBean, EveryDayEntity, String>
     ) {
-
-
         when (type) {
             Constant.ANDROID_TYPE -> HttpManager.request().get(Api::class.java).getAndroid(count, page)
             Constant.IOS_TYPE -> HttpManager.request().get(Api::class.java).getIOS(count, page)
