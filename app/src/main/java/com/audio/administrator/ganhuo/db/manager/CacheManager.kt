@@ -45,6 +45,8 @@ class CacheManager private constructor() {
                 true
             }
         } else {
+            // 第一次插入
+            DBManager.get.getCacheDao().insertOrReplace(cache)
             true
         }
     }

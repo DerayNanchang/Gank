@@ -28,7 +28,7 @@ import org.jetbrains.anko.support.v4.startActivity
  */
 abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
 
-    private lateinit var presenter: GankPresenterImpl
+    private var presenter: GankPresenterImpl? = null
     private lateinit var mAdapter: GanHuoAdapter
     private lateinit var refreshLayoutView: SmartRefreshLayout
     private var androidPage = 1
@@ -46,6 +46,7 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
     }
 
     private fun initView() {
+        presenter = GankPresenterImpl(this)
         initBody(spvContent)
         inRefresh()
     }
@@ -63,7 +64,6 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
     }
 
     private fun initData() {
-        presenter = GankPresenterImpl(this)
         mAdapter = GanHuoAdapter()
         mAdapter.addFootView(MyFootView(context))
         spvContent?.let {
@@ -76,25 +76,25 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
                     itemAnimator = DefaultItemAnimator()
                     mAdapter.scrollMoreEntity(this) {
                         when (getType()) {
-                            Constant.ANDROID_TYPE -> presenter.getGank(
+                            Constant.ANDROID_TYPE -> presenter?.getGank(
                                 getType(),
                                 GankPresenterImpl.MODE_MORE,
                                 GankPresenterImpl.PAGE_SIZE,
                                 ++androidPage
                             )
-                            Constant.IOS_TYPE -> presenter.getGank(
+                            Constant.IOS_TYPE -> presenter?.getGank(
                                 getType(),
                                 GankPresenterImpl.MODE_MORE,
                                 GankPresenterImpl.PAGE_SIZE,
                                 ++iosPage
                             )
-                            Constant.WELFARE_TYPE -> presenter.getGank(
+                            Constant.WELFARE_TYPE -> presenter?.getGank(
                                 getType(),
                                 GankPresenterImpl.MODE_MORE,
                                 GankPresenterImpl.PAGE_SIZE,
                                 ++welfarePage
                             )
-                            Constant.VIDEO_TYPE -> presenter.getGank(
+                            Constant.VIDEO_TYPE -> presenter?.getGank(
                                 getType(),
                                 GankPresenterImpl.MODE_MORE,
                                 GankPresenterImpl.PAGE_SIZE,
@@ -119,12 +119,6 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
             }
         })
 
-        mAdapter.setOnMItemView1ImgLongListener(object : GanHuoAdapter.OnItemView1ImgLongListener {
-            override fun itemImageListener(position: Int, data: ResultsBean) {
-                GlideUtils.downLoadImageNew(data.images[position])
-            }
-        })
-
         // 2张图片样式的点击事件
         mAdapter.setOnMItemView2ImgListener(object : GanHuoAdapter.OnItemView2ImgListener {
             override fun itemImageListener(position: Int, data: ResultsBean, imgPosition: Int) {
@@ -137,11 +131,6 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
             }
         })
 
-        mAdapter.setOnMItemView2ImgLongListener(object : GanHuoAdapter.OnItemView2ImgLongListener {
-            override fun itemImageListener(position: Int, data: ResultsBean, imgPosition: Int) {
-                GlideUtils.downLoadImageNew(data.images[position])
-            }
-        })
 
         // 3张图片样式的点击事件
         mAdapter.setOnMItemView3ImgListener(object : GanHuoAdapter.OnItemView3ImgListener {
@@ -155,38 +144,30 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
         })
 
 
-        1111111
-        mAdapter.setOnMItemView3ImgLongListener(object : GanHuoAdapter.OnItemView3ImgLongListener {
-            override fun itemImageListener(position: Int, data: ResultsBean, imgPosition: Int) {
-                GlideUtils.downLoadImageNew(data.images[position])
-            }
-        })
-
-
     }
 
     private fun updateData() {
 
         when (getType()) {
-            Constant.ANDROID_TYPE -> presenter.getGank(
+            Constant.ANDROID_TYPE -> presenter?.getGank(
                 getType(),
                 GankPresenterImpl.MODE_UPDATE,
                 GankPresenterImpl.PAGE_SIZE,
                 androidPage
             )
-            Constant.IOS_TYPE -> presenter.getGank(
+            Constant.IOS_TYPE -> presenter?.getGank(
                 getType(),
                 GankPresenterImpl.MODE_UPDATE,
                 GankPresenterImpl.PAGE_SIZE,
                 iosPage
             )
-            Constant.WELFARE_TYPE -> presenter.getGank(
+            Constant.WELFARE_TYPE -> presenter?.getGank(
                 getType(),
                 GankPresenterImpl.MODE_UPDATE,
                 GankPresenterImpl.PAGE_SIZE,
                 welfarePage
             )
-            Constant.VIDEO_TYPE -> presenter.getGank(
+            Constant.VIDEO_TYPE -> presenter?.getGank(
                 getType(),
                 GankPresenterImpl.MODE_UPDATE,
                 GankPresenterImpl.PAGE_SIZE,
@@ -226,7 +207,7 @@ abstract class GankFragment : BaseFragment(), IGankContract.IGankView {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        presenter.destroy()
+        presenter?.destroy()
     }
 
     protected abstract fun getType(): String
